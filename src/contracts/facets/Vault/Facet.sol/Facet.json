@@ -1,0 +1,16 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "Facet",
+  "sourceName": "contracts/facets/Vault/Facet.sol",
+  "abi": [
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    }
+  ],
+  "bytecode": "0x6080604052348015600f57600080fd5b5060008060000160006101000a81548160ff021916908315150217905550603f80603a6000396000f3fe6080604052600080fdfea264697066735822122085af9606611271bc4656d9d75e4eeb1bbfb5ac75115def121c5a20f8aa28af4164736f6c634300080a0033",
+  "deployedBytecode": "0x6080604052600080fdfea264697066735822122085af9606611271bc4656d9d75e4eeb1bbfb5ac75115def121c5a20f8aa28af4164736f6c634300080a0033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}
