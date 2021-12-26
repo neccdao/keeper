@@ -1,6 +1,7 @@
 import { ethers } from "ethers";
 const weiroll = require("@weiroll/weiroll.js");
 import tokens from "../src/lib/tokens";
+import bondDepositoryJSON from "../src/contracts/facets/Bond/BondDepositoryFacet.sol/BondDepositoryFacet.json";
 import stakingJSON from "../src/contracts/facets/Bond/StakingFacet.sol/StakingFacet.json";
 import readerJSON from "../src/contracts/facets/Reader/ReaderFacet.sol/ReaderFacet.json";
 import vaultJSON from "../src/contracts/facets/Vault/VaultFacet.sol/VaultFacet.json";
@@ -38,6 +39,11 @@ const handler = async function () {
             TokenJSON.abi,
             signer
         );
+        const bondDepository = new ethers.Contract(
+            process.env.BOND_DEPOSITORY_ADDRESS,
+            bondDepositoryJSON.abi,
+            signer
+        );
         //
         const balance = await provider.getBalance(signer.address);
 
@@ -59,6 +65,21 @@ const handler = async function () {
         console.info(
             "StakingFacet.rebase() transactionHash: ",
             rebaseTransactionHash
+        );
+        //
+
+        const distributeFeesTx = await bondDepository.distributeFees();
+        const distributeFeesReciept = await distributeFeesTx.wait();
+        const {
+            gasUsed: distributeFeesGasUsed,
+            transactionHash: distributeFeesTransactionHash,
+        } = await provider.getTransactionReceipt(distributeFeesTx.hash);
+        console.info(
+            "* distributeFees gas used: " + distributeFeesGasUsed.toString()
+        );
+        console.info(
+            "BondDepositoryFacet.distributeFees() transactionHash: ",
+            distributeFeesTransactionHash
         );
 
         const blockNumber = await provider.getBlockNumber();

@@ -1,4 +1,4 @@
-service: liquidator
+service: keeper
 runtime: nodejs
 
 env: flex

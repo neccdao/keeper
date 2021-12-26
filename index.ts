@@ -10,9 +10,6 @@ const main = async () => {
     try {
         console.info("*** STARTING LIQUIDATOR INTERVAL" + "***");
         console.log("RPC_URL: " + process.env.RPC_URL);
-        console.log(
-            "TESTABLE_VM_ADDRESS ADDRESS: " + process.env.TESTABLE_VM_ADDRESS
-        );
         console.log("KEEPER_ADDRESS: " + process.env.KEEPER_ADDRESS);
         console.log(
             "EXCHANGE_DIAMOND_ADDRESS: " + process.env.EXCHANGE_DIAMOND_ADDRESS
